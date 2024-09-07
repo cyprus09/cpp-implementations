@@ -26,8 +26,8 @@ private:
   // store your priority queue elements
   vector<int> store;
 
-  int parent(int i) { return i >> 1; }     // i / 2 through bitwise operation
-  int left(int i) { return i << 1; }       // i * 2
+  int parent(int i) { return i >> 1; }      // i / 2 through bitwise operation
+  int left(int i) { return i << 1; }        // i * 2
   int right(int i) { return (i << 1) + 1; } // i * 2 + 1
 
 public:
