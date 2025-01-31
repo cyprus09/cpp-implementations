@@ -25,7 +25,7 @@ void addMoney()
 {
   // introduce mutex lock
   m.lock();
-  // critical section of the code since both threads can access at the same time
+  // critical section of the code since both threads can access at the same time and will have potential race condition
   ++myAmount;
   // mutex unlock to let other threads access this section
   m.unlock();
