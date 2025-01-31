@@ -48,20 +48,60 @@
 //   return 0;
 // }
 
-
 // 3. functor (function object)
+
+// class Base {
+//   public:
+//     void operator () (int x) {
+//       while(x--> 0) {
+//         std::cout << x << std::endl;
+//       }
+//     }
+// };
+
+// int main() {
+//   std::thread t((Base()), 10);
+//   t.join();
+//   return 0;
+// }
+
+// 4. non-static member functions
+
+// class Base
+// {
+// public:
+//   void run(int x)
+//   {
+//     while (x-- > 0)
+//     {
+//       std::cout << x << std::endl;
+//     }
+//   }
+// };
+
+// int main()
+// {
+//   Base b;
+//   std::thread t1(&Base::run, &b, 10);
+//   t1.join();
+//   return 0;
+// }
+
+
+// 5. static member functions
+// you do not need an object for static member functions and can initialise directly
 
 class Base {
   public:
-    void operator () (int x) {
-      while(x--> 0) {
-        std::cout << x << std::endl;
-      }
+   static void run(int x) {
+    while(x--> 0) {
+      std::cout << x << std::endl;
     }
+   }
 };
 
 int main() {
-  std::thread t((Base()), 10);
+  std::thread t(&Base::run, 10);
   t.join();
   return 0;
 }
